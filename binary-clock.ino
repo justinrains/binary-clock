@@ -41,7 +41,7 @@ void setup() { //set outputs and inputs
 
 
 void loop() {
-  digitalWrite(0, HIGH);
+//  digitalWrite(0, HIGH);
   static unsigned long lastTick = 0; // set up a local variable to hold the last time we moved forward one second
   // (static variables are initialized once and keep their values between function calls)
   // move forward one second every 1000 milliseconds
@@ -81,23 +81,20 @@ if (hour >=24) {
       for (i=1;i<=13;i++) {
         digitalWrite(i, HIGH);
       }
-  } else  {
-Serial.print(munit);
+    } else  {
+//Serial.print(munit);
   //minutes units
-//  if(munit == 1 || munit == 3 || munit == 5 || munit == 7 || munit == 9) {  digitalWrite(1, LOW);} else {  digitalWrite(1, HIGH);}
-//  if(munit == 2 || munit == 3 || munit == 6 || munit == 7) {digitalWrite(2, LOW);} else {digitalWrite(2,HIGH);}
-//  if(munit == 4 || munit == 5 || munit == 6 || munit == 7) {digitalWrite(3, LOW);} else {digitalWrite(3,HIGH);}
-//  if(munit == 8 || munit == 9) {digitalWrite(4, LOW);} else {digitalWrite(4,HIGH);}
-  if (munit == 1 || munit == 3 || munit == 5 || munit == 7 || munit == 9) {  digitalWrite(1, HIGH);} else {  digitalWrite(1, LOW);}
-  if (munit == 2 || munit == 3 || munit == 6 || munit == 7) {digitalWrite(2, HIGH);} else {digitalWrite(2, LOW);}
-  if (munit == 4 || munit == 5 || munit == 6 || munit == 7) {digitalWrite(3, HIGH);} else {digitalWrite(3, LOW);}
-  if (munit == 8 || munit == 9) {digitalWrite(4, HIGH);} else {digitalWrite(4,LOW);}
-
-  //minutes 
-//  if((minute >= 10 && minute < 20) || (minute >= 30 && minute < 40) || (minute >= 50 && minute < 60))  {digitalWrite(5, LOW);} else {digitalWrite(5,HIGH);}
-//  if(minute >= 20 && minute < 40)  {digitalWrite(6, LOW);} else {digitalWrite(6,HIGH);}
-//  if(minute >= 40 && minute < 60) {digitalWrite(7, LOW);} else {digitalWrite(7,HIGH);}
+    if (munit == 0) {digitalWrite(1, LOW);}//Serial.print(munit);} else {digitalWrite(1, LOW);Serial.print(munit);}
+    if (munit == 1 || munit == 3 || munit == 5 || munit == 7 || munit == 9) {  digitalWrite(2, HIGH);} else {digitalWrite(2, LOW);}
+    if (munit == 2 || munit == 3 || munit == 6 || munit == 7) {digitalWrite(3, HIGH);} else {digitalWrite(3, LOW);}
+    if (munit == 4 || munit == 5 || munit == 6 || munit == 7) {digitalWrite(4, HIGH);} else {digitalWrite(4, LOW);}
+    if (munit == 8 || munit == 9) {digitalWrite(4, HIGH);} else {digitalWrite(5,LOW);}
 /*
+  //minutes 
+  if((minute >= 10 && minute < 20) || (minute >= 30 && minute < 40) || (minute >= 50 && minute < 60))  {digitalWrite(5, HIGH);} else {digitalWrite(5,LOW);}
+  if(minute >= 20 && minute < 40)  {digitalWrite(6, HIGH);} else {digitalWrite(6,LOW);}
+  if(minute >= 40 && minute < 60) {digitalWrite(7, HIGH);} else {digitalWrite(7,LOW);}
+
   //hour units
   if(hunit == 1 || hunit == 3 || hunit == 5 || hunit == 7 || hunit == 9) {digitalWrite(8, LOW);} else {digitalWrite(8,HIGH);}
   if(hunit == 2 || hunit == 3 || hunit == 6 || hunit == 7) {digitalWrite(9, LOW);} else {digitalWrite(9,HIGH);}
