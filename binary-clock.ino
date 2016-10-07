@@ -31,12 +31,14 @@ void setup() { //set outputs and inputs
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
   
-  pinMode(18, INPUT);
   pinMode(14, INPUT);
+  pinMode(18, INPUT);
   pinMode(19, INPUT);
+  analogReference(EXTERNAL);
+
   digitalWrite(14, HIGH);
-  digitalWrite(19, HIGH);
   digitalWrite(18, HIGH);
+  digitalWrite(19, HIGH);
 }
 
 
@@ -88,7 +90,7 @@ if (hour >=24) {
     if (munit == 1 || munit == 3 || munit == 5 || munit == 7 || munit == 9) {  digitalWrite(2, HIGH);} else {digitalWrite(2, LOW);}
     if (munit == 2 || munit == 3 || munit == 6 || munit == 7) {digitalWrite(3, HIGH);} else {digitalWrite(3, LOW);}
     if (munit == 4 || munit == 5 || munit == 6 || munit == 7) {digitalWrite(4, HIGH);} else {digitalWrite(4, LOW);}
-    if (munit == 8 || munit == 9) {digitalWrite(4, HIGH);} else {digitalWrite(5,LOW);}
+    if (munit == 8 || munit == 9) {digitalWrite(5, HIGH);} else {digitalWrite(5,LOW);}
 /*
   //minutes 
   if((minute >= 10 && minute < 20) || (minute >= 30 && minute < 40) || (minute >= 50 && minute < 60))  {digitalWrite(5, HIGH);} else {digitalWrite(5,LOW);}
@@ -108,16 +110,16 @@ if (hour >=24) {
   }
 
   valm = digitalRead(14);    // add one minute when pressed
-   if(valm== LOW) {
-   minute++;
-   second=0;
-   delay(250);
+  if(valm== LOW) {
+    minute++;
+    second=0;
+    delay(250);
   }
   
   valh = digitalRead(19);    // add one hour when pressed
-   if(valh==LOW) {
-   hour++;
-   second=0;
-   delay(250);
+  if(valh==LOW) {
+    hour++;
+    second=0;
+    delay(250);
   }
 }
