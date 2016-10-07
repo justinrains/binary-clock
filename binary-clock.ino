@@ -15,9 +15,9 @@ int i= 0;
 boolean light = 1;
 
 void setup() { //set outputs and inputs
-  Serial.begin(9600);
-  pinMode(0, OUTPUT);
-  pinMode(1, OUTPUT);
+  Serial.begin(9600); // for debugging
+  //pinMode(0, OUTPUT);
+  //pinMode(1, OUTPUT);
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(4, OUTPUT);
@@ -48,7 +48,7 @@ void loop() {
   // (static variables are initialized once and keep their values between function calls)
   // move forward one second every 1000 milliseconds
   
-  if (millis() - lastTick >= 100) { //0) {
+  if (millis() - lastTick >= 100) { //0) { // set to 1000 for production!
     lastTick = millis();
     second++;
   }
