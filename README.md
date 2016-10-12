@@ -1,3 +1,7 @@
 # Binary Clock Arduino Code
 
-### Customized/decoded by [Justin Rains](http://justinrains.com)
+## Prerequisites
+### [Arduino Uno](http://amzn.to/2dZNYTs)
+### [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+
+## Author: [Justin Rains](http://justinrains.com)
