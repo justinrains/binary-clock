@@ -1,12 +1,12 @@
-/*
+/******************************************************
 An open-source binary clock for Arduino.
 
 Customized by Justin Rains
-http://justinrains.com
 
+Web: http://justinrains.com
 GitHub: https://github.com/justinrains/binary-clock
 
-*/
+******************************************************/
 
 int second=0, minute=0, hour=0; //start the time on 00:00:00
 int munit = 0;
@@ -19,8 +19,7 @@ boolean light = 1;
 
 void setup() { //set outputs and inputs
   Serial.begin(9600); // for debugging
-  //pinMode(0, OUTPUT);
-  //pinMode(1, OUTPUT);
+
   pinMode(2, OUTPUT); //sb1
   pinMode(3, OUTPUT); //sb2
   pinMode(4, OUTPUT); //sb3
@@ -33,11 +32,12 @@ void setup() { //set outputs and inputs
   pinMode(11, OUTPUT);
   pinMode(12, OUTPUT);
   pinMode(13, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
   
   pinMode(14, INPUT);
   pinMode(18, INPUT);
   pinMode(19, INPUT);
-  analogReference(EXTERNAL);
 
   digitalWrite(14, HIGH);
   digitalWrite(18, HIGH);
@@ -46,12 +46,11 @@ void setup() { //set outputs and inputs
 
 
 void loop() {
-//  digitalWrite(0, HIGH);
   static unsigned long lastTick = 0; // set up a local variable to hold the last time we moved forward one second
   // (static variables are initialized once and keep their values between function calls)
   // move forward one second every 1000 milliseconds
   
-  if (millis() - lastTick >= 100) { //0) { // set to 1000 for production!
+  if (millis() - lastTick >= 1000) { // set to 1000 for production!
     lastTick = millis();
     second++;
   }
@@ -88,7 +87,7 @@ if (hour >=24) {
       }
     } else  {
   //minutes units
-    if (munit == 0) {digitalWrite(1, LOW);}//Serial.print(munit);} else {digitalWrite(1, LOW);Serial.print(munit);}
+    if (munit == 0) {digitalWrite(1, LOW);}
     if (munit == 1 || munit == 3 || munit == 5 || munit == 7 || munit == 9) {  digitalWrite(2, HIGH);} else {digitalWrite(2, LOW);}
     if (munit == 2 || munit == 3 || munit == 6 || munit == 7) {digitalWrite(3, HIGH);} else {digitalWrite(3, LOW);}
     if (munit == 4 || munit == 5 || munit == 6 || munit == 7) {digitalWrite(4, HIGH);} else {digitalWrite(4, LOW);}
@@ -96,19 +95,18 @@ if (hour >=24) {
 
   //minutes 
   if((minute >= 10 && minute < 20) || (minute >= 30 && minute < 40) || (minute >= 50 && minute < 60))  {digitalWrite(6, HIGH);} else {digitalWrite(6,LOW);}
-  if(minute >= 20 && minute < 40)  {digitalWrite(8, HIGH);} else {digitalWrite(7,LOW);}
+  if(minute >= 20 && minute < 40)  {digitalWrite(7, HIGH);} else {digitalWrite(7,LOW);}
   if(minute >= 40 && minute < 60) {digitalWrite(8, HIGH);} else {digitalWrite(8,LOW);}
-/*
-  //hour units
-  if(hunit == 1 || hunit == 3 || hunit == 5 || hunit == 7 || hunit == 9) {digitalWrite(8, LOW);} else {digitalWrite(8,HIGH);}
-  if(hunit == 2 || hunit == 3 || hunit == 6 || hunit == 7) {digitalWrite(9, LOW);} else {digitalWrite(9,HIGH);}
-  if(hunit == 4 || hunit == 5 || hunit == 6 || hunit == 7) {digitalWrite(10, LOW);} else {digitalWrite(10,HIGH);}
-  if(hunit == 8 || hunit == 9) {digitalWrite(11, LOW);} else {digitalWrite(11,HIGH);}
 
-  //hour
-  if(hour >= 10 && hour < 20)  {digitalWrite(12, LOW);} else {digitalWrite(12,HIGH);}
-  if(hour >= 20 && hour < 24)  {digitalWrite(13, LOW);} else {digitalWrite(13,HIGH);}
-*/
+  //hour units
+  if(hunit == 1 || hunit == 3 || hunit == 5 || hunit == 7 || hunit == 9) {digitalWrite(9, HIGH);} else {digitalWrite(9,LOW);}
+  if(hunit == 2 || hunit == 3 || hunit == 6 || hunit == 7) {digitalWrite(10, HIGH);} else {digitalWrite(10,LOW);}
+  if(hunit == 4 || hunit == 5 || hunit == 6 || hunit == 7) {digitalWrite(11, HIGH);} else {digitalWrite(11,LOW);}
+  if(hunit == 8 || hunit == 9) {digitalWrite(12, HIGH);} else {digitalWrite(12,LOW);}
+
+    //hour
+    if(hour >= 10 && hour < 20)  {digitalWrite(A1, HIGH);} else {digitalWrite(A1,LOW);}
+    if(hour >= 20 && hour < 24)  {digitalWrite(A2, HIGH);} else {digitalWrite(A2,LOW);}
   }
 
   valm = digitalRead(14);    // add one minute when pressed
