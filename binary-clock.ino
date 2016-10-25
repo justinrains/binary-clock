@@ -35,13 +35,13 @@ void setup() { //set outputs and inputs
   pinMode(A1, OUTPUT);
   pinMode(A2, OUTPUT);
   
-  pinMode(14, INPUT);
-  pinMode(18, INPUT);
-  pinMode(19, INPUT);
+  pinMode(A3, INPUT);
+  pinMode(A4, INPUT);
+  //pinMode(19, INPUT);
 
-  digitalWrite(14, HIGH);
-  digitalWrite(18, HIGH);
-  digitalWrite(19, HIGH);
+  digitalWrite(A3, HIGH);
+  digitalWrite(A4, HIGH);
+//  digitalWrite(19, HIGH);
 }
 
 
@@ -50,7 +50,7 @@ void loop() {
   // (static variables are initialized once and keep their values between function calls)
   // move forward one second every 1000 milliseconds
   
-  if (millis() - lastTick >= 1000) { // set to 1000 for production!
+  if (millis() - lastTick >= 300) { // set to 1000 for production
     lastTick = millis();
     second++;
   }
@@ -109,17 +109,17 @@ if (hour >=24) {
     if(hour >= 20 && hour < 24)  {digitalWrite(A2, HIGH);} else {digitalWrite(A2,LOW);}
   }
 
-  valm = digitalRead(14);    // add one minute when pressed
-  if(valm== LOW) {
+  valm = digitalRead(A3);    // add one minute when pressed
+  if (valm == LOW) {
     minute++;
     second=0;
-    delay(250);
+    delay(450);
   }
   
-  valh = digitalRead(19);    // add one hour when pressed
-  if(valh==LOW) {
+  valh = digitalRead(A4);    // add one hour when pressed
+  if (valh == LOW) {
     hour++;
     second=0;
-    delay(250);
+    delay(450);
   }
 }
