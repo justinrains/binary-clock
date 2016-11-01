@@ -51,7 +51,6 @@ void loop() {
   // move forward one second every 1000 milliseconds
   
   if (millis() - lastTick >= 1000) { // set to 1000 for production
-    
     lastTick = millis();
     second++;
   }
