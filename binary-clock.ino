@@ -24,26 +24,25 @@ void setup() { //set outputs and inputs
   pinMode(3, OUTPUT); //sb2
   pinMode(4, OUTPUT); //sb3
   pinMode(5, OUTPUT); //sb4
-  pinMode(6, OUTPUT); //sa1
   pinMode(7, OUTPUT); //sa2
   pinMode(8, OUTPUT); //sa3
+
   pinMode(9, OUTPUT);
   pinMode(10, OUTPUT);
   pinMode(11, OUTPUT);
   pinMode(12, OUTPUT);
+  
   pinMode(13, OUTPUT);
   pinMode(A1, OUTPUT);
   pinMode(A2, OUTPUT);
   
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);
-  //pinMode(19, INPUT);
 
-  digitalWrite(A3, HIGH);
-  digitalWrite(A4, HIGH);
+  digitalWrite(A3, HIGH); // seconds
+  digitalWrite(A4, HIGH); // hours
 //  digitalWrite(19, HIGH);
 }
-
 
 void loop() {
   static unsigned long lastTick = 0; // set up a local variable to hold the last time we moved forward one second
