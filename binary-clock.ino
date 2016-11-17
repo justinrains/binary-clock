@@ -5,6 +5,7 @@ Customized by Justin Rains
 
 Web: http://justinrains.com
 GitHub: https://github.com/justinrains/binary-clock
+Twitter: @justinrains
 
 ******************************************************/
 
