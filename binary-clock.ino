@@ -85,8 +85,6 @@ if (hour >=24) {
         digitalWrite(i, HIGH);
       }
     } else  {
-//Serial.print(hour);
-//Serial.print(minute);
   //minutes units
     if (munit == 0) {digitalWrite(1, LOW);}
     if (munit == 1 || munit == 3 || munit == 5 || munit == 7 || munit == 9) {  digitalWrite(2, HIGH);} else {digitalWrite(2, LOW);}
