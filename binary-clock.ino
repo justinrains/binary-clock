@@ -5,6 +5,7 @@ Customized by Justin Rains
 
 Web: http://justinrains.com
 GitHub: https://github.com/justinrains/binary-clock
+Hire me? justinrains.com
 Twitter: @justinrains
 
 ******************************************************/
@@ -19,7 +20,7 @@ int i= 0;
 boolean light = 1;
 
 void setup() { //set outputs and inputs
-  Serial.begin(9600); // for debugging
+//  Serial.begin(9600); // for debugging
 
   pinMode(2, OUTPUT); //sb1
   pinMode(3, OUTPUT); //sb2
@@ -42,6 +43,8 @@ void setup() { //set outputs and inputs
 
   digitalWrite(A3, HIGH); // seconds
   digitalWrite(A4, HIGH); // hours
+
+  pinMode(0, INPUT);
 }
 
 void loop() {
@@ -74,14 +77,14 @@ if (hour >=24) {
   munit = minute%10; //sets the variable munit and hunit for the unit digits
   hunit = hour%10;
 
-  ledstats = digitalRead(18);  // read input value, for setting leds off, but keeping count
-  if (ledstats == LOW){
+  ledstats = digitalRead(0);  // read input value, for setting leds off, but keeping count
+  if (ledstats == LOW) {
     light=!light;
     delay(250);
   }
     
-    if (light == LOW){
-      for (i=1;i<=13;i++) {
+    if (light == LOW) {
+      for (i=2;i<=12;i++) {
         digitalWrite(i, HIGH);
       }
     } else  {
@@ -102,7 +105,7 @@ if (hour >=24) {
   if(hunit == 2 || hunit == 3 || hunit == 6 || hunit == 7) {digitalWrite(10, HIGH);} else {digitalWrite(10,LOW);}
   if(hunit == 4 || hunit == 5 || hunit == 6 || hunit == 7) {digitalWrite(11, HIGH);} else {digitalWrite(11,LOW);}
   if(hunit == 8 || hunit == 9) {digitalWrite(12, HIGH);} else {digitalWrite(12,LOW);}
-
+//Serial.print(hunit);
     //hour
     if(hour >= 10 && hour < 20)  {digitalWrite(A1, HIGH);} else {digitalWrite(A1,LOW);}
     if(hour >= 20 && hour < 24)  {digitalWrite(A2, HIGH);} else {digitalWrite(A2,LOW);}
@@ -110,15 +113,19 @@ if (hour >=24) {
 
   valm = digitalRead(A3);    // add one minute when pressed
   if (valm == LOW) {
-    minute++;
+    minute = minute + 1;
+//Serial.println(minute);
     second=0;
-    delay(450);
+    digitalWrite(0, HIGH);
+    delay(1000);
   }
   
   valh = digitalRead(A4);    // add one hour when pressed
   if (valh == LOW) {
-    hour++;
-    second=0;
-    delay(450);
+    hour = hour + 1;
+//Serial.println(hour);
+    second = 0;
+    digitalWrite(0, HIGH);
+    delay(1000);
   }
 }
