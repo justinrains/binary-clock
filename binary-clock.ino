@@ -8,6 +8,14 @@ GitHub: https://github.com/justinrains/binary-clock
 Hire me? justinrains.com
 Twitter: @justinrains
 
+New: Working on an Arduino Uno CNC!!
+I'll post the code and pics.
+I need 2 more CD-ROMS. I would rather not pay for them.
+
+It doesn't seem like a lot. Just 2 CD/DVD-ROMS.
+Help a maker? I'd give you props at the 2017 Dayton MMF!
+I'm accepted!ßß
+
 ******************************************************/
 
 int second=0, minute=0, hour=0; //start the time on 00:00:00
@@ -117,7 +125,7 @@ if (hour >=24) {
 //Serial.println(minute);
     second=0;
     digitalWrite(0, HIGH);
-    delay(1000);
+    delay(500);
   }
   
   valh = digitalRead(A4);    // add one hour when pressed
@@ -126,6 +134,6 @@ if (hour >=24) {
 //Serial.println(hour);
     second = 0;
     digitalWrite(0, HIGH);
-    delay(1000);
+    delay(500);
   }
 }
